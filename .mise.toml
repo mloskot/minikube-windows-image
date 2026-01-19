@@ -1,0 +1,6 @@
+[settings]
+idiomatic_version_file_enable_tools = []
+
+[tools]
+packer = "1.14"
+terraform = "1.14"

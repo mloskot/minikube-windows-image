@@ -1,0 +1,15 @@
+.envrc
+.terraform/
+.terraform.lock.hcl
+.terraform.tfvars
+*.auto.*
+*.backup
+*.rdp
+*.tfplan
+*.tfstate*
+*secrets*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
