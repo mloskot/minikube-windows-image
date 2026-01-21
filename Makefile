@@ -46,11 +46,11 @@ infra-init: ## Initialize terraform for infrastructure
 infra-plan: infra-vars infra.tfplan ## Run terraform plan for infrastructure
 
 infra.tfplan:
-	terraform -chdir=$(INFRA_DIR) plan -out infra.tfplan
+	terraform -chdir=$(INFRA_DIR) plan -out infra.tfplan -lock=false
 
 .PHONY: infra-apply
 infra-apply: infra-plan ## Run terraform apply for infrastructure
-	terraform -chdir=$(INFRA_DIR) apply infra.tfplan
+	terraform -chdir=$(INFRA_DIR) apply -lock=false infra.tfplan
 
 .PHONY: infra-fmt
 infra-fmt: ## Run terraform fmt for infrastructure
@@ -103,11 +103,11 @@ test-init: ## Run terraform init for VM testing
 test-plan: test-vars test.tfplan ## Run terraform plan for VM testing
 
 test.tfplan:
-	terraform -chdir=$(TEST_DIR) plan -out test.tfplan
+	terraform -chdir=$(TEST_DIR) plan -out test.tfplan -lock=false
 
 .PHONY: test-apply
 test-apply: test-plan ## Run terraform apply for VM testing
-	terraform -chdir=$(TEST_DIR) apply -auto-approve test.tfplan
+	terraform -chdir=$(TEST_DIR) apply -lock=false -auto-approve test.tfplan
 
 .PHONY: test-fmt
 test-fmt: ## Run terraform fmt for VM testing
@@ -124,5 +124,5 @@ test-vars: ## Generate input variables for test
 
 .PHONY: test-destroy
 test-destroy: test-vars ## Destroy only the test VM
-	terraform -chdir=$(TEST_DIR) plan -destroy -out destroy.tfplan
-	terraform -chdir=$(TEST_DIR) apply -destroy -auto-approve destroy.tfplan
+	terraform -chdir=$(TEST_DIR) plan -destroy -out destroy.tfplan -lock=false
+	terraform -chdir=$(TEST_DIR) apply -destroy -auto-approve -lock=false destroy.tfplan

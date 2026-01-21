@@ -1,12 +1,20 @@
 resource "azurerm_resource_group" "main" {
   name     = var.resource_group
   location = var.location
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azurerm_shared_image_gallery" "main" {
   name                = "sigmk" # used by Packer and test Terraform config
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azurerm_shared_image" "main" {

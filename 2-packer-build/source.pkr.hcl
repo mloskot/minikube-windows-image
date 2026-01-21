@@ -2,7 +2,7 @@ source "azure-arm" "mk-win11" {
   subscription_id    = var.subscription_id
   use_azure_cli_auth = true
 
-  location = var.location
+  build_resource_group_name = var.resource_group
 
   image_publisher = "MicrosoftWindowsDesktop"
   image_offer     = "Windows-11"

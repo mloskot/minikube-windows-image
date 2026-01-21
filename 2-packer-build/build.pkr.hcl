@@ -19,10 +19,10 @@ build {
     elevated_user     = var.admin_username
     elevated_password = var.admin_password
     scripts = [
+      "scripts/install-openssh.ps1",
       "scripts/disable-privacy.ps1",
       "scripts/disable-services.ps1",
-      "scripts/optimize-windows.ps1",
-      "scripts/install-openssh.ps1"
+      "scripts/optimize-windows.ps1"
     ]
   }
 
