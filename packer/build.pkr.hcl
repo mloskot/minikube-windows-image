@@ -20,9 +20,9 @@ build {
     elevated_password = var.vm_admin_password
     scripts = [
       "scripts/disable-privacy.ps1"
-      # "scripts/disable-services.ps1",
-      # "scripts/optimize-windows.ps1",
-      # "scripts/install-openssh.ps1"
+      "scripts/disable-services.ps1",
+      "scripts/optimize-windows.ps1",
+      "scripts/install-openssh.ps1"
     ]
   }
 

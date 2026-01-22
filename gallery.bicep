@@ -5,7 +5,7 @@ param imageName string = 'minikube-windows-11' // TODO: Load from env and Packer
 param sharedImageGalleryName string = 'minikube' // TODO: Load from env?
 
 @onlyIfNotExists()
-resource sharedImageGallery 'Microsoft.Compute/galleries@2024-03-03' = {
+resource sig 'Microsoft.Compute/galleries@2024-03-03' = {
   name: sharedImageGalleryName
   location: location
   tags: {}
@@ -16,10 +16,10 @@ resource sharedImageGallery 'Microsoft.Compute/galleries@2024-03-03' = {
 }
 
 @onlyIfNotExists()
-resource virtualMachineImage 'Microsoft.Compute/galleries/images@2024-03-03' = {
+resource image 'Microsoft.Compute/galleries/images@2024-03-03' = {
   location: location
   name: imageName 
-  parent: sharedImageGallery
+  parent: sig
   tags: {}
   properties: {
     description: 'Minimal Windows 11 image for Minikube'
