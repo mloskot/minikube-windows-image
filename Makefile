@@ -17,14 +17,12 @@ env: ## Generate .mise.local.toml with Azure environment specification
 	echo MINIKUBE_AZ_DEPLOYMENT_NAME=\"$(MINIKUBE_AZ_DEPLOYMENT_NAME)\" >> .mise.local.toml
 	echo MINIKUBE_AZ_RESOURCE_GROUP=\"minikube-sig\" >> .mise.local.toml
 	echo MINIKUBE_AZ_SUBSCRIPTION_ID=\"$(shell az account show --query 'id' --output tsv)\" >> .mise.local.toml
-	echo MINIKUBE_AZ_TENANT_ID=\"$(shell az account show --query 'tenantId' --output tsv)\" >> .mise.local.toml
 
 .PHONY:
 preflight: ## Pre-flight checks for azure-* and packer-* targets
 	$(if $(strip $(MINIKUBE_AZ_DEPLOYMENT_NAME)),,$(error MINIKUBE_AZ_DEPLOYMENT_NAME is not defined. Export or run make env.))
 	$(if $(strip $(MINIKUBE_AZ_RESOURCE_GROUP)),,$(error MINIKUBE_AZ_RESOURCE_GROUP is not defined. Export or run make env.))
 	$(if $(strip $(MINIKUBE_AZ_SUBSCRIPTION_ID)),,$(error MINIKUBE_AZ_SUBSCRIPTION_ID is not defined. Export or run make env.))
-	$(if $(strip $(MINIKUBE_AZ_TENANT_ID)),,$(error MINIKUBE_AZ_TENANT_ID is not defined. Export or run make env.))
 	@az group show --name "$(MINIKUBE_AZ_RESOURCE_GROUP)" --subscription "$(MINIKUBE_AZ_SUBSCRIPTION_ID)" || \
 	( echo "Run 'az group create --name \"$(MINIKUBE_AZ_RESOURCE_GROUP)\" --location \"<your preference>\" to create the resource group." && exit 1 )
 
@@ -51,15 +49,6 @@ azure-plan: azure-what-if ## Alias for azure-what-if
 azure-deploy: preflight ## Deploy Bicep templates to Azure as deployment stack
 	az stack group create --action-on-unmanage deleteResources --deny-settings-mode None \
 		--name "${MINIKUBE_AZ_DEPLOYMENT_NAME}" \
-		--resource-group "$(MINIKUBE_AZ_RESOURCE_GROUP)" \
-		--subscription "$(MINIKUBE_AZ_SUBSCRIPTION_ID)" \
-		--template-file gallery.bicep \
-		--parameters gallery.bicepparam
-
-.PHONY:
-azure-deploy-as-deployment: preflight ## Deploy Bicep templates to Azure as deployment for experiments
-	az deployment group create --confirm-with-what-if \
-		--name "${MINIKUBE_AZ_DEPLOYMENT_NAME}-$(shell date +%Y%m%d%H%M%S)" \
 		--resource-group "$(MINIKUBE_AZ_RESOURCE_GROUP)" \
 		--subscription "$(MINIKUBE_AZ_SUBSCRIPTION_ID)" \
 		--template-file gallery.bicep \
