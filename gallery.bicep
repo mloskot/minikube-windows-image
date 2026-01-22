@@ -24,8 +24,8 @@ resource image 'Microsoft.Compute/galleries/images@2024-03-03' = {
   properties: {
     description: 'Minimal Windows 11 image for Minikube'
     identifier: {
-      publisher: 'mloskot'
-      offer: 'minikube'
+      publisher: 'kubernetes'
+      offer: 'minikube-ci'
       sku: 'windows-11'
     }
     architecture: 'x64'
