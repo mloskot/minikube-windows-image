@@ -33,9 +33,10 @@ Help: `make help`
 2. Create required input parameters:
 
     ```bash
-    export MINIKUBE_AZ_RESOURCE_GROUP="rg-minikube"
+    export MINIKUBE_AZ_RESOURCE_GROUP="SIG-CLUSTER-LIFECYCLE-MINIKUBE"
     export MINIKUBE_AZ_SUBSCRIPTION_ID="$(az account show --query 'id' --output tsv)"
     export MINIKUBE_AZ_TENANT_ID="$(az account show --query 'tenantId' --output tsv)"
+    export MINIKUBE_AZ_LOCATION="southcentralus"
     ```
 
     Alternatively, install [mise](https://mise.jdx.dev) and run to generate `.mise.local.toml` file:
