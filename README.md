@@ -30,10 +30,6 @@ Help: `make help`
     az login
     ```
 
-    ```bash
-    az config set defaults.location=westus2 # eastus, uksouth, etc.
-    ```
-
 2. Create required input parameters:
 
     ```bash
@@ -53,7 +49,7 @@ Help: `make help`
 3. Create Azure resource group, if it does not exist:
 
     ```bash
-    az group create --name "${MINIKUBE_AZ_RESOURCE_GROUP}" --location
+    az group create --name "${MINIKUBE_AZ_RESOURCE_GROUP}" --location=<eastus, westus, uksouth, etc.>
     ```
 
 ### Build image

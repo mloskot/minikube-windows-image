@@ -16,7 +16,6 @@ env: ## Generate .mise.local.toml with Azure environment specification
 	echo "[env]" > .mise.local.toml
 	echo MINIKUBE_AZ_DEPLOYMENT_NAME=\"$(MINIKUBE_AZ_DEPLOYMENT_NAME)\" >> .mise.local.toml
 	echo MINIKUBE_AZ_RESOURCE_GROUP=\"minikube-sig\" >> .mise.local.toml
-	echo MINIKUBE_AZ_LOCATION=\"$(shell az config get --query "defaults[?name=='location'].value" --output tsv)\" >> .mise.local.toml
 	echo MINIKUBE_AZ_SUBSCRIPTION_ID=\"$(shell az account show --query 'id' --output tsv)\" >> .mise.local.toml
 	echo MINIKUBE_AZ_TENANT_ID=\"$(shell az account show --query 'tenantId' --output tsv)\" >> .mise.local.toml
 
@@ -26,9 +25,8 @@ preflight: ## Pre-flight checks for azure-* and packer-* targets
 	$(if $(strip $(MINIKUBE_AZ_RESOURCE_GROUP)),,$(error MINIKUBE_AZ_RESOURCE_GROUP is not defined. Export or run make env.))
 	$(if $(strip $(MINIKUBE_AZ_SUBSCRIPTION_ID)),,$(error MINIKUBE_AZ_SUBSCRIPTION_ID is not defined. Export or run make env.))
 	$(if $(strip $(MINIKUBE_AZ_TENANT_ID)),,$(error MINIKUBE_AZ_TENANT_ID is not defined. Export or run make env.))
-	$(if $(strip $(MINIKUBE_AZ_LOCATION)),,$(warning MINIKUBE_AZ_LOCATION is not set because Azure CLI default location is not configured.))
 	@az group show --name "$(MINIKUBE_AZ_RESOURCE_GROUP)" --subscription "$(MINIKUBE_AZ_SUBSCRIPTION_ID)" || \
-	( echo "Run 'az group create --name \"$(MINIKUBE_AZ_RESOURCE_GROUP)\" --location \"$(MINIKUBE_AZ_LOCATION)\" to create the resource group." && exit 1 )
+	( echo "Run 'az group create --name \"$(MINIKUBE_AZ_RESOURCE_GROUP)\" --location \"<your preference>\" to create the resource group." && exit 1 )
 
 ##@ Azure Infrastructure
 
