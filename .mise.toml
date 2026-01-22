@@ -1,3 +1,8 @@
+[env]
+MINIKUBE_AZ_TENANT_ID = { required = true }
+MINIKUBE_AZ_SUBSCRIPTION_ID = { required = true }
+MINIKUBE_AZ_RESOURCE_GROUP = { required = true }
+
 [settings]
 idiomatic_version_file_enable_tools = []
 

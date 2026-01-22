@@ -5,19 +5,24 @@
 
 ## Usage
 
+Help: `make help`
+
 ```bash
 az login
 ```
 
 ```bash
 export MINIKUBE_AZ_RESOURCE_GROUP="rg-mloskot"
-export MINIKUBE_AZ_TENANT_ID="$(az account show --query 'tenantId' --output tsv)"
 export MINIKUBE_AZ_SUBSCRIPTION_ID="$(az account show --query 'id' --output tsv)"
+export MINIKUBE_AZ_TENANT_ID="$(az account show --query 'tenantId' --output tsv)"
 ```
 
-or, if using mise, run `make env`.
+or, if using [mise](https://mise.jdx.dev), run `make env` to generate `.mise.local.toml`.
 
 ```bash
-# make ...
-# outputs SSH/RDP credentials to connect to VM
+make preflight
+```
+
+```bash
+make azure-deploy
 ```

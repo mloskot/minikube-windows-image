@@ -1,0 +1,2 @@
+using './gallery.bicep'
+
