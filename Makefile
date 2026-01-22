@@ -31,7 +31,7 @@ preflight: ## Pre-flight checks for azure-* and packer-* targets
 ##@ Azure Infrastructure
 
 .PHONY:
-azure-validate: preflight ## Validate Bicep templates for Azure deployment
+azure-validate: preflight ## Validate syntax of Bicep templates
 	az deployment group validate --no-prompt --verbose \
 		--resource-group "$(MINIKUBE_AZ_RESOURCE_GROUP)" \
 		--subscription "$(MINIKUBE_AZ_SUBSCRIPTION_ID)" \

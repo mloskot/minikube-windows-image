@@ -39,7 +39,7 @@ Help: `make help`
     export MINIKUBE_AZ_LOCATION="southcentralus"
     ```
 
-    Alternatively, install [mise](https://mise.jdx.dev) and run to generate `.mise.local.toml` file:
+    Alternatively, install [mise](https://mise.jdx.dev) and let `make` generate `.mise.local.toml` file:
     
     ```bash
     cd minikube-windows-image
