@@ -1,7 +1,7 @@
 targetScope = 'resourceGroup'
 
 param location string = resourceGroup().location
-param imageName string = 'minikube-windows-11' // TODO: Load from env and Packer vm_image_name accordingly?
+param imageName string = 'minikube-windows-11-ci' // TODO: Load from env and Packer vm_image_name accordingly?
 param sharedImageGalleryName string = 'minikube' // TODO: Load from env?
 
 @onlyIfNotExists()
