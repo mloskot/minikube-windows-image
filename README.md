@@ -35,7 +35,9 @@ Help: `make help`
     ```bash
     export MINIKUBE_AZ_RESOURCE_GROUP="SIG-CLUSTER-LIFECYCLE-MINIKUBE"
     export MINIKUBE_AZ_SUBSCRIPTION_ID="$(az account show --query 'id' --output tsv)"
-    export MINIKUBE_AZ_LOCATION="southcentralus"
+    export MINIKUBE_AZ_LOCATION="southcentralus" #=$(az config get defaults.location --query name -o tsv) # if you've configured it
+    export MINIKUBE_AZ_IMAGE_NAME="minikube-ci-windows11"
+    export MINIKUBE_AZ_IMAGE_VERSION="1.0.0"
     ```
 
     Alternatively, install [mise](https://mise.jdx.dev) and let `make` generate `.mise.local.toml` file:
