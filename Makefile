@@ -1,5 +1,5 @@
 # minikube-windows-image Makefile
-MINIKUBE_AZ_DEPLOYMENT_NAME ?= "minikube-sig"
+MINIKUBE_AZ_DEPLOYMENT_NAME ?= "minikube-sig" # Azure implementation detail
 
 .DEFAULT_GOAL := help
 
