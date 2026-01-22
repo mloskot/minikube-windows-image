@@ -13,7 +13,7 @@ variable "minikube_shared_image_gallery" {
 
 variable "vm_image_name" {
   type = string
-  default = "minikube-windows-11-ci" # TODO: Load from env and Bicep parmeter accordingly?
+  default = "minikube-ci-windows-11" # TODO: Load from env and Bicep parmeter accordingly?
 }
 
 variable "vm_image_version" {

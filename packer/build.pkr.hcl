@@ -1,6 +1,6 @@
 build {
   sources = [
-    "source.azure-arm.minikube-windows-11"
+    "source.azure-arm.minikube-ci-windows-11"
   ]
 
   ###### <Provisioners with elevated privileges>

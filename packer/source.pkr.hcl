@@ -1,4 +1,4 @@
-source "azure-arm" "minikube-windows-11" {
+source "azure-arm" "minikube-ci-windows-11" {
   subscription_id    = var.minikube_subscription_id
   use_azure_cli_auth = true
 
