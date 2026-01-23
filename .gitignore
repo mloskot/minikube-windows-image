@@ -1,15 +1,6 @@
-.terraform/
-.terraform.lock.hcl
-.terraform.tfvars
+.azure/
 *.auto.*
 *.backup
-*.local*
+*.local.*
 *.rdp
-*.tfplan
-*.tfstate*
 *secrets*
-crash.log
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json

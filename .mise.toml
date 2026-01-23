@@ -1,9 +1,7 @@
-[env]
-MINIKUBE_AZ_SUBSCRIPTION_ID = { required = true }
-MINIKUBE_AZ_RESOURCE_GROUP = { required = true }
-
-[settings]
-idiomatic_version_file_enable_tools = []
+[[env]]
+AZURE_CONFIG_DIR = { value = "{{config_root}}/.azure" }
+[[env]]
+'_'.source = { path = "env.sh" }
 
 [tools]
 packer = "1.14"

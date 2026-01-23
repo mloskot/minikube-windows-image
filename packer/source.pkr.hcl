@@ -9,7 +9,7 @@ source "azure-arm" "minikube-ci-windows-11" {
   image_offer     = "Windows-11"
   image_sku       = "win11-25h2-pro"
 
-  vm_size        = "Standard_D8s_v6"
+  vm_size        = "Standard_D2s_v3"
   os_type        = "Windows"
   communicator   = "winrm"
   winrm_use_ssl  = true
