@@ -7,4 +7,4 @@ param sigImageVersion = readEnvironmentVariable('MINIKUBE_AZ_IMAGE_VERSION') // 
 
 // Azure Virtual Machine
 param vmName = 'vm-minikube-ci'
-param vmSize = 'Standard_D2s_v3'
+param vmSize = 'Standard_D16s_v3'
