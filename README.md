@@ -88,7 +88,7 @@ Connect using password:
 
 ```bash
 export SSHPASS='M!n!kub34dm!n'
-sshpass -e ssh -o StrictHostKeyChecking=no minikubeadmin@vm-minikube-ci.${AZURE_DEFAULTS_LOCATION}.cloudapp.azure.com
+sshpass -e ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no minikubeadmin@vm-minikube-ci.${AZURE_DEFAULTS_LOCATION}.cloudapp.azure.com
 ```
 
 Connect using SSH key:
