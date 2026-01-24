@@ -96,3 +96,9 @@ Connect using SSH key:
 ```bash
 ssh -i ./ssh/id_ecdsa.txt  -o StrictHostKeyChecking=no minikubeadmin@vm-minikube-ci.${AZURE_DEFAULTS_LOCATION}.cloudapp.azure.com
 ```
+
+Example SCP:
+
+```bash
+sshpass -e scp -o StrictHostKeyChecking=no -o PubkeyAuthentication=no README.md "minikubeadmin@vm-minikube-ci.${AZURE_DEFAULTS_LOCATION}.cloudapp.azure.com:C:/Users/minikubeadmin/"
+```
