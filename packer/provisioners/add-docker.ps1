@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Continuye'
+$ErrorActionPreference = 'Continue'
 $ProgressPreference = 'SilentlyContinue'
 
 # https://minikube.sigs.k8s.io/docs/tutorials/docker_desktop_replacement/#Windows
